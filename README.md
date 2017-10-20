@@ -62,13 +62,13 @@ var parseTime = require ('parse-time-to-ms')
 Parse a valid time string and returns the corresponding milliseconds.
 
 * `timeString` {String|Number} - a time string starting with hours up to milliseconds: `'02:35'` or `'2:35:55.010'`. 
-  An invalid date will not throw, but could result in unexpected result. Types other than string will be parsed to integer.
+  An invalid time will not throw, but could result in unexpected result. Types other than string will be parsed to integer.
 
 ## `parseTime.s(timeString1, [timeString2, ...])` -> Array<Integer>
 
 Utility to easily convert a sequence of times
 
-* `timeString1`, `timeString2`, `...` {String|Number} - valid date strings.
+* `timeString1`, `timeString2`, `...` {String|Number} - valid time strings.
 
 
 # compatibility
