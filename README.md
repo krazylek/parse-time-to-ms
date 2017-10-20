@@ -3,10 +3,18 @@
 Ultralight module to parse a time string into milliseconds.
 
 
-Provided with a valid time string, the parser will convert it to milliseconds.
+Provided with a valid time string , the parser will convert it to milliseconds.
+Valid strings are those of ISO 8601 with separators:
 
-Time string have to start with hours (eg. '35:10' would be interpreted as 35 hours 10 minutes). 
-Some valid formats: `'02:35'`, `'02:35:55'` or `'2:35:55.010'`.
+```
+hh:mm:ss.sss 
+hh:mm:ss 	
+hh:mm
+```
+
+Please note that the library do not validate format. It means `hhmmss` ISO will not be parsed properly, and time string have to start with hours (eg. '35:10' would be interpreted as 35 hours 10 minutes). 
+
+Some examples of valid formats: `'02:35'`, `'02:35:55'` or `'2:35:55.010'`.
 
 
 # example
@@ -53,13 +61,19 @@ var parseTime = require ('parse-time-to-ms')
 
 Parse a valid time string and returns the corresponding milliseconds.
 
-* `timeString` {String|Number} - a time string starting with hours up to milliseconds: `'02:35'` or `'2:35:55.010'`. An invalid date will not throw, and type other than string will be parsed to integer.
+* `timeString` {String|Number} - a time string starting with hours up to milliseconds: `'02:35'` or `'2:35:55.010'`. 
+  An invalid date will not throw, but could result in unexpected result. Types other than string will be parsed to integer.
 
 ## `parseTime.s(timeString1, [timeString2, ...])` -> Array<Integer>
 
 Utility to easily convert a sequence of times
 
 * `timeString1`, `timeString2`, `...` {String|Number} - valid date strings.
+
+
+# compatibility
+
+`parse-time-to-ms` use ES6 Rest Parameters.
 
 
 # license
@@ -70,5 +84,11 @@ MIT
 # install
 
 ```
-npm install full-day-range
+npm install parse-time-to-ms
 ```
+
+
+# see also
+
+- https://github.com/krazylek/full-day-range Easily combine with this lib to create day ranges.
+- https://github.com/unshiftio/millisecond Similar purpose, but from natural language.
