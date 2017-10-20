@@ -1,6 +1,6 @@
 {
   "name": "parse-time-to-ms",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ultralight module to parse a time string into milliseconds.",
   "main": "index.js",
   "scripts": {
