@@ -7,7 +7,7 @@ Valid strings are those defined in ISO 8601:
 
 ```
 hh:mm:ss.sss or hhmmss.sss
-hh:mm:ss 	   or hhmmss
+hh:mm:ss     or hhmmss
 hh:mm        or hhmm
 hh
 ```
