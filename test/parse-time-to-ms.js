@@ -4,11 +4,14 @@ var test = require('tape')
 var baseTime = new Date(2017, 0, 1, 0, 0, 0, 0)
 
 test('complete time', function (t) {
-  var time = '23:30:10.001'
-  var parsedTime = parseTime(time)
+  var timeA = '23:30:10.001'
+  var timeB = '233010.001'
+  var parsedTimeA = parseTime(timeA)
+  var parsedTimeB = parseTime(timeB)
   var expectedMs = new Date(2017, 0, 1, 23, 30, 10, 1) - baseTime
 
-  t.equal(parsedTime, expectedMs)
+  t.equal(parsedTimeA, expectedMs)
+  t.equal(parsedTimeB, expectedMs)
   t.end()
 })
 
@@ -22,7 +25,7 @@ test('hh:mm format', function (t) {
 })
 
 test('h:mm format', function (t) {
-  var time = '5:30'
+  var time = '05:30'
   var parsedTime = parseTime(time)
   var expectedMs = new Date(2017, 0, 1, 5, 30, 0, 0) - baseTime
 
@@ -40,18 +43,20 @@ test('whole day', function (t) {
 })
 
 test('sequence', function (t) {
-  var sequence = parseTime.s('00:30', '02:25:30', '12:34:10.349')
+  var sequenceA = parseTime.s('00:30', '02:25:30', '12:34:10.349')
+  var sequenceB = parseTime.s('00:30', '02:25:30', '12:34:10.349')
   var expectedMs = [
     new Date(2017, 0, 1, 0, 30, 0, 0) - baseTime,
     new Date(2017, 0, 1, 2, 25, 30, 0) - baseTime,
     new Date(2017, 0, 1, 12, 34, 10, 349) - baseTime
   ]
 
-  t.deepEqual(sequence, expectedMs)
+  t.deepEqual(sequenceA, expectedMs)
+  t.deepEqual(sequenceB, expectedMs)
   t.end()
 })
 
-test('passing an int will be returned as it', function (t) {
+test('passing a number will be returned as it', function (t) {
   var time = 30000
   var parsedTime = parseTime(time)
   var expectedMs = new Date(2017, 0, 1, 0, 0, 30, 0) - baseTime

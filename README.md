@@ -1,20 +1,20 @@
 # parse-time-to-ms
 
-Ultralight module to parse a time string into milliseconds.
+Ultralight module to parse ISO 8601 time string into milliseconds.
 
 
-Provided with a valid time string , the parser will convert it to milliseconds.
-Valid strings are those of ISO 8601 with separators:
+Valid strings are those defined in ISO 8601:
 
 ```
-hh:mm:ss.sss 
-hh:mm:ss 	
-hh:mm
+hh:mm:ss.sss or hhmmss.sss
+hh:mm:ss 	   or hhmmss
+hh:mm        or hhmm
+hh
 ```
 
-Please note that the library do not validate format. It means `hhmmss` ISO will not be parsed properly, and time string have to start with hours (eg. '35:10' would be interpreted as 35 hours 10 minutes). 
+Please note that this module do not validate format. For example time string have to start with hours (eg. '35:10' would be interpreted as 35 hours 10 minutes). 
 
-Some examples of valid formats: `'02:35'`, `'02:35:55'` or `'2:35:55.010'`.
+Some examples of valid formats: `'02:35'`, `'02:35:55'` or `'023555.010'`.
 
 
 # example
@@ -39,12 +39,9 @@ Usage with `Date`:
 var parseTime = require('parse-time-to-ms')
 
 var day = new Date(2017, 0, 1)
-console.log(day.toString())
-
-// => Sun Jan 01 2017 00:00:00 GMT+1100 (DST)
-
 var time = parseTime('15:00')
 var datetime = new Date(+day + time)
+
 console.log(datetime.toString())
 
 // => Sun Jan 01 2017 15:00:00 GMT+1100 (DST)
@@ -61,7 +58,7 @@ var parseTime = require ('parse-time-to-ms')
 
 Parse a valid time string and returns the corresponding milliseconds.
 
-* `timeString` {String|Number} - a time string starting with hours up to milliseconds: `'02:35'` or `'2:35:55.010'`. 
+* `timeString` {String|Number} - a time string starting with hours: `'02:35'` or `'2:35:55.010'`. 
   An invalid time will not throw, but could result in unexpected result. Types other than string will be parsed to integer.
 
 ## `parseTime.s(timeString1, [timeString2, ...])` -> Array<Integer>

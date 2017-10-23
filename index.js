@@ -1,7 +1,7 @@
 module.exports = parseTime
 module.exports.s = seq
 
-var multiplier = [60, 60, 1000, 1] // hh, mm, ss, ms
+var multiplier = [60, 60, 1000] // hh, mm, ss
 
 function seq (...times) {
   return times.map(parseTime)
@@ -12,8 +12,8 @@ function parseTime (time) {
     return parseInt(time)
   }
 
-  var values = time.match(/\d+/g)
-  return multiplier.reduce(function (total, coef, i) {
-    return (total + parseInt(values[i] || 0)) * coef
-  }, 0)
+  var values = time.match(/\d{2}(\.\d+)?/g)
+  return parseInt(multiplier.reduce(function (total, coef, i) {
+    return (total + parseFloat(values[i] || 0)) * coef
+  }, 0))
 }
