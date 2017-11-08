@@ -91,4 +91,5 @@ npm install parse-time-to-ms
 # see also
 
 - https://github.com/krazylek/full-day-range Easily combine with this lib to create day ranges.
-- https://github.com/unshiftio/millisecond or https://github.com/zeit/ms Similar purpose, but from natural language.
+- https://github.com/unshiftio/millisecond Similar purpose, but from natural language.
+- https://github.com/zeit/ms idem
