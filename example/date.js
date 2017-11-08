@@ -7,4 +7,4 @@ console.log(date.toString(), 'initial date')
 var time = parseTime('15:00')
 var datetime = new Date(+date + time)
 
-console.log(datetime.toString(), 'added "15:00" to Date object' )
+console.log(datetime.toString(), 'added "15:00" to Date object')
