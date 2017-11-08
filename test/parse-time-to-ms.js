@@ -1,4 +1,5 @@
 var parseTime = require('../')
+var parseTimes = require('../sequence.js')
 var test = require('tape')
 
 var baseTime = new Date(2017, 0, 1, 0, 0, 0, 0)
@@ -43,16 +44,16 @@ test('whole day', function (t) {
 })
 
 test('sequence', function (t) {
-  var sequenceA = parseTime.s('00:30', '02:25:30', '12:34:10.349')
-  var sequenceB = parseTime.s('00:30', '02:25:30', '12:34:10.349')
+  var sequenceA = parseTimes('00:30', '02:25:30', '12:34:10.349')
+  var sequenceB = parseTimes(['00:30', '02:25:30', '12:34:10.349'])
   var expectedMs = [
     new Date(2017, 0, 1, 0, 30, 0, 0) - baseTime,
     new Date(2017, 0, 1, 2, 25, 30, 0) - baseTime,
     new Date(2017, 0, 1, 12, 34, 10, 349) - baseTime
   ]
 
-  t.deepEqual(sequenceA, expectedMs)
-  t.deepEqual(sequenceB, expectedMs)
+  t.deepEqual(sequenceA, expectedMs, 'able to parse a list of arguments')
+  t.deepEqual(sequenceB, expectedMs, 'able to parse an array')
   t.end()
 })
 

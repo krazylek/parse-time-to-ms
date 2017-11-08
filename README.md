@@ -16,17 +16,20 @@ Please note that this module do not validate format. For example time string hav
 
 Some examples of valid formats: `'02:35'`, `'02:35:55'` or `'023555.010'`.
 
+Invalid format: '2:35' (need a trailing 0)
+
 
 # example
 
 ```js
 var parseTime = require('parse-time-to-ms')
+var parseTimes = require('parse-time-to-ms/sequence')
 
-parseTime('8:00')
+console.log(parseTime('08:00'))
 
 // => 28800000
 
-var timeRange = parseTime.s('18:00', '23:30')
+var timeRange = parseTimes('18:00', '23:30')
 
 console.log(timeRange)
 
@@ -38,9 +41,9 @@ Usage with `Date`:
 ```js
 var parseTime = require('parse-time-to-ms')
 
-var day = new Date(2017, 0, 1)
+var date = new Date(2017, 0, 1)
 var time = parseTime('15:00')
-var datetime = new Date(+day + time)
+var datetime = new Date(+date + time)
 
 console.log(datetime.toString())
 
@@ -70,7 +73,7 @@ Utility to easily convert a sequence of times
 
 # compatibility
 
-`parse-time-to-ms` use ES6 Rest Parameters.
+`parse-time-to-ms/sequence` use ES6 Rest Parameters.
 
 
 # license
@@ -88,4 +91,4 @@ npm install parse-time-to-ms
 # see also
 
 - https://github.com/krazylek/full-day-range Easily combine with this lib to create day ranges.
-- https://github.com/unshiftio/millisecond Similar purpose, but from natural language.
+- https://github.com/unshiftio/millisecond or https://github.com/zeit/ms Similar purpose, but from natural language.
